@@ -8,4 +8,8 @@ export class UserRepository {
   findByUsername(username: string) {
     return this.prisma.users.findUnique({ where: { username } });
   }
+
+  findById(id: string) {
+    return this.prisma.users.findUnique({ where: { id } });
+  }
 }
