@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { NotFoundError } from 'rxjs';
+import { NotFoundError } from 'src/common/exceptions/not-found.exception';
 import { UserRepository } from 'src/repository/user.repository';
 import { ProfileInputDto, ProfileOutputDto } from './profile.dto';
 
