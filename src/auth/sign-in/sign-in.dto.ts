@@ -1,12 +1,12 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
 export class SignInInputDto {
-  @IsString()
-  @IsNotEmpty()
+  @IsString({ message: 'Nome do usuário é obrigatório' })
+  @IsNotEmpty({ message: 'Nome do usuário é obrigatório' })
   username: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsString({ message: 'Nome do usuário é obrigatório' })
+  @IsNotEmpty({ message: 'Nome do usuário é obrigatório' })
   password: string;
 }
 
