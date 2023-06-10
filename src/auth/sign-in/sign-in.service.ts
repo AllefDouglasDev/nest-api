@@ -25,7 +25,7 @@ export class SignInService {
     if (!hasValidPassword) {
       throw new InvalidCredentialsError();
     }
-    const token = this.tokenService.createToken(user.id);
+    const token = await this.tokenService.createToken(user.id);
     return {
       token,
       userId: user.id,

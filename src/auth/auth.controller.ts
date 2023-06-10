@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { UserId } from 'src/common/decorators/user-id.decorator';
 import { ProfileService } from './profile/profile.service';
 import { SignInInputDto, SignInOutputDto } from './sign-in/sign-in.dto';
 import { SignInService } from './sign-in/sign-in.service';
@@ -10,8 +12,10 @@ export class AuthController {
     private signinInService: SignInService,
   ) {}
 
+  @UseGuards(AuthGuard('jwt'))
   @Get('profile')
-  profile(@Param('id') id: string) {
+  profile(@UserId() id: string) {
+    console.log({ id });
     return this.profileService.execute({ id });
   }
 
