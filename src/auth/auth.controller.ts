@@ -1,6 +1,14 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { UserId } from 'src/common/decorators/user-id.decorator';
+import { JwtGuard } from 'src/common/guards/jwt.guard';
 import { ProfileService } from './profile/profile.service';
 import { SignInInputDto, SignInOutputDto } from './sign-in/sign-in.dto';
 import { SignInService } from './sign-in/sign-in.service';
@@ -12,13 +20,14 @@ export class AuthController {
     private signinInService: SignInService,
   ) {}
 
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(JwtGuard)
   @Get('profile')
   profile(@UserId() id: string) {
     return this.profileService.execute({ id });
   }
 
   @Post('sign-in')
+  @HttpCode(HttpStatus.CREATED)
   signIn(@Body() input: SignInInputDto): Promise<SignInOutputDto> {
     return this.signinInService.execute(input);
   }
