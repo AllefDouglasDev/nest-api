@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { AppModule } from 'src/app.module';
 import { ProfileService } from './profile.service';
 
 describe('ProfileService', () => {
@@ -6,7 +7,7 @@ describe('ProfileService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ProfileService],
+      imports: [AppModule],
     }).compile();
 
     service = module.get<ProfileService>(ProfileService);
