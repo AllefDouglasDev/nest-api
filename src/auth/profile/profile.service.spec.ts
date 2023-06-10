@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundError } from 'src/common/exceptions/not-found.exception';
 import { InMemoryUserRepository } from 'src/repository/mocks/in-memory-user.respository';
-import { UserRepository } from 'src/repository/user.repository';
+import { UserPrismaRepository } from 'src/repository/prisma/user-prisma.repository';
 import { ProfileService } from './profile.service';
 
 describe('ProfileService', () => {
@@ -14,7 +14,7 @@ describe('ProfileService', () => {
       providers: [
         ProfileService,
         {
-          provide: UserRepository,
+          provide: UserPrismaRepository,
           useValue: userRepository,
         },
       ],

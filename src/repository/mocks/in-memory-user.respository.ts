@@ -1,7 +1,7 @@
 import { User } from 'src/common/entities/user';
-import { IUserRepository } from '../interfaces/user.repository';
+import { UserRepository } from '../interfaces/user.repository';
 
-export class InMemoryUserRepository implements IUserRepository {
+export class InMemoryUserRepository implements UserRepository {
   users: User[] = [];
 
   async findByUsername(username: string): Promise<User | undefined> {

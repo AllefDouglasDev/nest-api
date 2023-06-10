@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { EncryptionService } from 'src/common/encryption/encryption.service';
 import { InvalidCredentialsError } from 'src/common/exceptions/invalid-credentials.exception';
 import { TokenService } from 'src/common/token/token.service';
-import { UserRepository } from 'src/repository/user.repository';
+import { UserPrismaRepository } from 'src/repository/prisma/user-prisma.repository';
 import { SignInInputDto, SignInOutputDto } from './sign-in.dto';
 
 @Injectable()
 export class SignInService {
   constructor(
-    private userRepository: UserRepository,
+    private userRepository: UserPrismaRepository,
     private encryptionService: EncryptionService,
     private tokenService: TokenService,
   ) {}

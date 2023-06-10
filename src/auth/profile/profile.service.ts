@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { NotFoundError } from 'src/common/exceptions/not-found.exception';
-import { UserRepository } from 'src/repository/user.repository';
+import { UserPrismaRepository } from 'src/repository/prisma/user-prisma.repository';
 import { ProfileInputDto, ProfileOutputDto } from './profile.dto';
 
 @Injectable()
 export class ProfileService {
-  constructor(private userRepository: UserRepository) {}
+  constructor(private userRepository: UserPrismaRepository) {}
 
   async execute(input: ProfileInputDto): Promise<ProfileOutputDto> {
     const user = await this.userRepository.findById(input.id);

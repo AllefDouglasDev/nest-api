@@ -1,12 +1,12 @@
 import { Global, Module, Provider } from '@nestjs/common';
-import { PrismaService } from './prisma.service';
-import { UserRepository } from './user.repository';
+import { PrismaService } from './prisma/prisma.service';
+import { UserPrismaRepository } from './prisma/user-prisma.repository';
 
 const providers: Provider[] = [
   PrismaService,
   {
-    provide: UserRepository,
-    useClass: UserRepository,
+    provide: UserPrismaRepository,
+    useClass: UserPrismaRepository,
   },
 ];
 
