@@ -17,7 +17,7 @@ import { SignInService } from './sign-in/sign-in.service';
 export class AuthController {
   constructor(
     private profileService: ProfileService,
-    private signinInService: SignInService,
+    private signInService: SignInService,
   ) {}
 
   @UseGuards(JwtGuard)
@@ -29,6 +29,6 @@ export class AuthController {
   @Post('sign-in')
   @HttpCode(HttpStatus.CREATED)
   signIn(@Body() input: SignInInputDto): Promise<SignInOutputDto> {
-    return this.signinInService.execute(input);
+    return this.signInService.execute(input);
   }
 }
