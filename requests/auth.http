@@ -1,0 +1,10 @@
+POST {{URL}}/auth/sign-in
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "@Secret123"
+}
+
+GET {{URL}}/auth/profile
+Authorization: Bearer {{TOKEN}}
